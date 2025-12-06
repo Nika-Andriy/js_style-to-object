@@ -13,11 +13,13 @@ function convertToObject(sourceString) {
     .filter(Boolean);
 
   return Object.fromEntries(
-    pairs.map((pair) => {
-      const [key, value] = pair.split(':', 2);
+    pairs
+      .map((pair) => {
+        const [key, value] = pair.split(':', 2);
 
-      return [key.trim(), value ? value.trim() : ''];
-    }),
+        return [key.trim(), value ? value.trim() : ''];
+      })
+      .filter(([key]) => key && key.trim()),
   );
 }
 
